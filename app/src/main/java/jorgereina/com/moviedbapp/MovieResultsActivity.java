@@ -214,12 +214,14 @@ public class MovieResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_results);
 
         recyclerView = (RecyclerView) findViewById(R.id.movie_recycler_view);
-
-        mAdapter = new MovieAdapter(movieList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
+
+        //mAdapter = new MovieAdapter(movieList);
+//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+//        recyclerView.setLayoutManager(mLayoutManager);
+//        recyclerView.setAdapter(mAdapter);
+//        mAdapter.notifyDataSetChanged();
         new MovieTask().execute(movieUrl);
 
         //prepareMovieData();
@@ -343,7 +345,13 @@ public class MovieResultsActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<Movie> results) {
             super.onPostExecute(results);
-            mAdapter.notifyDataSetChanged();
+            if (results != null){
+                mAdapter = new MovieAdapter(results);
+                recyclerView.setAdapter(mAdapter);
+                mAdapter.notifyDataSetChanged();
+            }
+
+
 
         }
     }
