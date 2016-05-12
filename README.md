@@ -1,3 +1,3 @@
 # MovieDbApp
 
-![alt tag](http://i.imgur.com/soAHp17.gifv)
+![alt tag](https://github.com/jorgereina1986/MovieDbApp/blob/master/moviedbapp.gif)
