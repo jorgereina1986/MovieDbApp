@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MovieResultsActivity.class);
         searchText = (EditText) findViewById(R.id.search_et);
         searchInput = searchText.getText().toString();
+        searchInput = searchInput.replaceAll(" ", "+");
         intent.putExtra(EXTRA_MESSAGE, searchInput);
         startActivity(intent);
     }

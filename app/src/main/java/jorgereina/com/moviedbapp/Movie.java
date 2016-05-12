@@ -7,15 +7,13 @@ public class Movie {
 
     public String movieTitle;
     public String movieOverview;
-    public String thumbnail;
+    public String moviePoster;
     public String year;
+    private String movieBackdrop;
 
-//    public Movie(String movieTitle, String movieDetails, String year) {
-//        this.movieTitle = movieTitle;
-//        this.movieOverview = movieDetails;
-//        this.year = year;
-//    }
-
+    public String getMovieBackdrop() {
+        return movieBackdrop;
+    }
 
     public String getMovieTitle() {
         return movieTitle;
@@ -33,20 +31,24 @@ public class Movie {
         this.movieOverview = movieOverview;
     }
 
-    public String getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(String thumbnail) {
-        this.thumbnail = thumbnail;
-    }
-
     public String getYear() {
         return year;
     }
 
     public void setYear(String year) {
         this.year = year;
+    }
+
+    public String getMoviePoster() {
+        return moviePoster;
+    }
+
+    public void setMoviePoster(String moviePoster) {
+        this.moviePoster = moviePoster;
+    }
+
+    public void setMovieBackdrop(String movieBackdrop) {
+        this.movieBackdrop = movieBackdrop;
     }
 }
 
