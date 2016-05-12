@@ -32,7 +32,5 @@ public class MovieDetailsActivity extends AppCompatActivity {
         title.setText(titleStr);
         overview.setText(overviewStr);
         Picasso.with(this).load(baseUrl+imageStr).placeholder(R.mipmap.ic_launcher).fit().into(backdrop);
-
-
     }
 }

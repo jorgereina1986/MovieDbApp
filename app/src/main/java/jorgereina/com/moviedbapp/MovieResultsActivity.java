@@ -2,6 +2,7 @@ package jorgereina.com.moviedbapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -30,15 +31,30 @@ public class MovieResultsActivity extends AppCompatActivity {
     private List<Movie> movieList = new ArrayList<>();
     private RecyclerView recyclerView;
     private MovieAdapter mAdapter;
-    private String movieUrl = "https://api.themoviedb.org/3/search/movie?query=avengers&api_key=fe321b50d58f46c550723750263ad677";
     private RecyclerView.LayoutManager mLayoutManager;
+
+    private static final String MOVIEDB_API_KEY = BuildConfig.MY_MOVIEDB_API_KEY;
+    private static final String BASE_URL = "https://api.themoviedb.org/3/search/movie?";
+
+    // url param key
+    private final String QUERY_PARAM = "query";
+    private final String API_KEY_PARAM = "api_key";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_results);
 
-        new MovieTask().execute(movieUrl);
+        //getting search input and adding it to search parameter
+        Intent getIntent = getIntent();
+        String searchQuery = getIntent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+
+
+        Uri buildUri = Uri.parse(BASE_URL).buildUpon()
+                .appendQueryParameter(QUERY_PARAM, searchQuery)
+                .appendQueryParameter(API_KEY_PARAM, MOVIEDB_API_KEY)
+                .build();
+        new MovieTask().execute(buildUri.toString());
     }
 
     private class MovieTask extends AsyncTask<String, Void, List<Movie>> {
